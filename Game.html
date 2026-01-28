@@ -1,13 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="Asset\Style\StylePageGame.css" rel="" type="text/css" />
-    <title>Game</title>
-  </head>
+<!DOCTYPE html>
 
-  <body>
-    <script src="Asset\Javascript\Script.js"></script>
-  </body>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONET FRUITS - Game Mencocokkan Buah</title>
+    <link href="Asset\Style\StylePageGame.css" rel="stylesheet">
+</head>
+<body>
+<!-- Container utama -->
+<div class="main-container" id="mainContainer">
+    <div class="game-logo">
+        <h1 class="game-title">ONET FRUITS</h1>
+        <p class="game-subtitle">Game Mencocokkan Buah</p>
+    </div>
+
+    <div class="center-fruits">
+        <span class="center-fruit">🍎</span>
+        <span class="center-fruit">🍊</span>
+        <span class="center-fruit">🍋</span>
+        <span class="center-fruit">🍌</span>
+        <span class="center-fruit">🍇</span>
+        <span class="center-fruit">🍓</span>
+    </div>
+
+    <p class="game-description">
+        Cocokkan dua kartu dengan gambar yang sama untuk mendapatkan poin!
+    </p>
+
+    <button class="start-button" onclick="startGame()">
+        <span>🎮 MULAI</span>
+    </button>
+
+    <div class="features">
+        <div class="feature-item">
+            <span class="feature-icon">⏱️</span>
+            <span>Timer</span>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">💯</span>
+            <span>Scoring</span>
+        </div>
+    </div>
+</div>
+
+<script src="Asset\Javascript\Script.js"></script>
+
+</body>
 </html>

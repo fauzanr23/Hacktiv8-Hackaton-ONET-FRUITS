@@ -41,12 +41,25 @@ function btnInputName() {
     });
     return;
   }
-
-  Swal.fire({
-    icon: "success",
-    title: "Halo " + name + "!",
-    text: "Game akan dimulai",
-    showConfirmButton: false,
-    timer: 1500,
-  });
+  window.location.href= "game.html"
 }
+
+
+// Fungsi untuk memulai game
+function startGame() {
+  const container = document.getElementById('mainContainer');
+  container.classList.add('fade-out');
+
+  setTimeout(() => {
+    // Redirect ke halaman game
+    window.location.href = 'onet-game.html';
+  }, 500);
+}
+
+// Easter egg: tekan spasi untuk start
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    startGame();
+  }
+});
