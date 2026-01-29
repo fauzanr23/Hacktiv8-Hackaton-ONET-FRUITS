@@ -2,6 +2,14 @@
 
 let music = document.getElementById("audio");
 let musicOn = false;
+var firstCard = null;
+var secondCard = null;
+var canFlip = true;
+var matches = 0;
+var moves = 0;
+var seconds = 0;
+var timerRunning = false;
+var timerInterval;
 
 function btnControlMusic() {
   let bgMusic = document.querySelector(".btnMusic");
@@ -41,97 +49,66 @@ function btnInputName() {
     });
     return;
   }
-  window.location.href = "game.html"
+  localStorage.setItem("playerName", name);
+  window.location.href = "game.html";
 }
 
+// Fungsi untuk waktu
+let time = 60;
+let timer = null;
+let paused = false;
+
+function startTimer() {
+  document.getElementById("time").textContent = time;
+
+  timer = setInterval(() => {
+    if (!paused) {
+      time--;
+      document.getElementById("time").textContent = time;
+
+      if (time === 0) {
+        clearInterval(timer);
+        Swal.fire({
+          icon: "error",
+          title: "Game Over",
+          text: "Waktu habis!",
+        });
+      }
+    }
+  }, 1000);
+}
 
 // Fungsi untuk memulai game
 function startGame() {
-  const container = document.getElementById('mainContainer');
-  container.classList.add('fade-out');
+  const container = document.getElementById("mainContainer");
+  container.classList.add("fade-out");
+
+  setTimeout(() => {
+    // Redirect ke halaman game
+    window.location.href = "onet-game.html";
+  }, 500);
 }
 
 // Easter egg: tekan spasi untuk start
-document.addEventListener('keydown', (e) => {
-  if (e.code === 'Space') {
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
     e.preventDefault();
     startGame();
   }
 });
 
 
-//Database gambar kartu
+// Fungsi untuk waktu
+function togglePause() {
+  const icon = document.getElementById("pauseIcon");
 
-let dbGambar = [
-  { id: 1, gambar: "apple", src: "Asset/Images/Kartu/apple.png" },
-  { id: 2, gambar: "apple", src: "Asset/Images/Kartu/apple.png" },
-  { id: 3, gambar: "bananas", src: "Asset/Images/Kartu/bananas.png" },
-  { id: 4, gambar: "bananas", src: "Asset/Images/Kartu/bananas.png" },
-  { id: 5, gambar: "cherries", src: "Asset/Images/Kartu/cherries.png" },
-  { id: 6, gambar: "cherries", src: "Asset/Images/Kartu/cherries.png" },
-  { id: 7, gambar: "dragon fruit", src: "Asset/Images/Kartu/dragon-fruit.png" },
-  { id: 8, gambar: "dragon fruit", src: "Asset/Images/Kartu/dragon-fruit.png" },
-  { id: 9, gambar: "grapes", src: "Asset/Images/Kartu/grapes.png" },
-  { id: 10, gambar: "grapes", src: "Asset/Images/Kartu/grapes.png" },
-  { id: 11, gambar: "orange", src: "Asset/Images/Kartu/orange.png" },
-  { id: 12, gambar: "orange", src: "Asset/Images/Kartu/orange.png" },
-  { id: 13, gambar: "passion fruit", src: "Asset/Images/Kartu/passion-fruit.png" },
-  { id: 14, gambar: "passion fruit", src: "Asset/Images/Kartu/passion-fruit.png" },
-  { id: 15, gambar: "pineapple", src: "Asset/Images/Kartu/pineapple.png" },
-  { id: 16, gambar: "pineapple", src: "Asset/Images/Kartu/pineapple.png" },
-  { id: 17, gambar: "strawberry", src: "Asset/Images/Kartu/strawberry.png" },
-  { id: 18, gambar: "strawberry", src: "Asset/Images/Kartu/strawberry.png" },
-  { id: 19, gambar: "watermelon", src: "Asset/Images/Kartu/watermelon.png" },
-  { id: 20, gambar: "watermelon", src: "Asset/Images/Kartu/watermelon.png" }
-]
+  paused = !paused; // toggle true/false
 
-
-//function display gambar di kartu
-
-let dbTemp = []
-
-function randomGambar() {
-
-  if (dbTemp.length === dbGambar.length) {
-    return
-  }
-  let random = Math.floor(Math.random() * 20)
-  let object = dbGambar[random]
-
-  let validasi = validasiGambar(object) //
-
-  if (validasi === false) {
-    return object.src
+  if (paused) {
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
   } else {
-    return randomGambar()
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
   }
 }
-
-
-function validasiGambar(object) {
-
-  for (let i = 0; i < dbTemp.length; i++) {
-    let perObj = dbTemp[i]
-
-    if (object.id === perObj.id) {
-      return true
-    }
-  }
-
-    dbTemp.push(object)
-    return false
-}
-
-let cards = document.getElementsByClassName("cardImg")
-for (let i = 0; i < cards.length; i++) {
-  let perCard = cards[i] //object
-  let Gambar = randomGambar()
-  if (Gambar) {
-    perCard.src = Gambar
-  }
-
-}
-
-
-
-

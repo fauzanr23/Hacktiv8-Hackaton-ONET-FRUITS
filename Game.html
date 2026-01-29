@@ -1,109 +1,83 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONET FRUITS - Game Mencocokkan Buah</title>
-    <link href="Asset\Style\StylePageGame.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONET FRUIT</title>
+
+  <link rel="stylesheet" href="Asset/Style/StylePageGame.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 </head>
 
 <body>
-    <!-- Container utama -->
-    <div class="main-container" id="mainContainer">
-        <div class="home-header">
-        </div>
-        <div class="game-logo">
-            <h1 class="game-title">ONET FRUITS</h1>
-            <p class="game-subtitle">Game Mencocokkan Buah</p>
-        </div>
 
-        <div class="center-fruits">
-            <div class="center-fruit">
-                <img class= "cardImg" id="card1" src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card2">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card3">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card4">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card5">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card6">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card7">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card8">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card9">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card10">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card11">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card12">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card13">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card14">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card15">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card16">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card17">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card18">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card19">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-            <div class="center-fruit" id="card20">
-                <img class= "cardImg"  src="" alt="" width="80px">
-            </div>
-        </div>
+  <audio id="audio" loop>
+    <source src="Asset\musics\musik2.mp3" type="audio/mpeg" />
+  </audio>
 
-        <p class="game-description">
-            Cocokkan dua kartu dengan gambar yang sama untuk mendapatkan poin!
-        </p>
+  <div class="main">
 
-        <button class="start-button" onclick="startGame()">
-            <span>🎮 MULAI</span>
-        </button>
+    <!-- HEADER -->
+    <div class="home-header">
+      <button class="btnMusic" onclick="btnControlMusic()">
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
 
-        <div class="features">
-            <div class="feature-item">
-                <span class="feature-icon">⏱️</span>
-                <span>Timer</span>
-            </div>
-            <div class="feature-item">
-                <span class="feature-icon">💯</span>
-                <span>Scoring</span>
-            </div>
-        </div>
+      <button class="pause-btn" onclick="togglePause()">
+        <i id="pauseIcon" class="fa-solid fa-pause"></i>
+      </button>
     </div>
 
-    <script src="Asset\Javascript\Script.js"></script>
+    <!-- TITLE -->
+    <div class="wrapper">
+      <div class="game-title">
+        <h1>ONET FRUIT</h1>
+      </div>
+    </div>
 
+    <!-- GAME CONTAINER -->
+    <div class="main-container">
+
+      <p id="playerNameText"></p>
+
+      <!-- GAME BOARD -->
+      <div id="gameBoard" class="game-board"></div>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+        <button class="btn" onclick="newGame()">
+          <i class="fas fa-redo"></i> New Game
+        </button>
+      </div>
+
+      <!-- INFO -->
+      <div class="features">
+        <div class="feature-item">
+          ⏱️ <span id="time">00:00</span>
+        </div>
+        <div class="feature-item">
+          Score: <span id="score">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="winModal">
+    <div class="modal-content">
+      <h2>🏆 YOU WIN 🏆</h2>
+      <p>
+        Score: <span id="finalScore"></span><br />
+        Time: <span id="finalTime"></span>
+      </p>
+      <button class="btn" onclick="newGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="Asset/Javascript/script2.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   position: relative;
   color: white;
+  transition: 0.3s ease-in;
 }
 
 .home::before {
@@ -52,26 +53,33 @@ body {
   font-size: 20px;
   cursor: pointer;
   color: white;
+  transition: 0.3s ease-in;
 }
 
 .bgMusic {
   background: #ffb703;
   border-radius: 50%;
   padding: 10px;
+  transition: 0.3s ease-out;
 }
 
 .darkAndLightMode button {
   background: transparent;
   border: 2px solid #ffb703;
   border-radius: 50%;
-  padding: 3px 8px;
-  font-size: 30px;
+  padding: 8px 10px;
   cursor: pointer;
   color: white;
+  transition: 0.3s ease-in;
+}
+
+.darkAndLightMode img {
+  width: 25px;
 }
 
 .darkAndLightMode .moon {
   display: none;
+  transition: 0.3s ease-in;
 }
 
 .home-content {
@@ -91,6 +99,7 @@ body {
     5px 5px 0 #ffb703,
     8px 8px 15px rgba(0, 0, 0, 0.35);
   animation: jelly 1.5s infinite alternate;
+  transition: 0.3s ease-in;
 }
 
 .home-images img {
@@ -120,10 +129,12 @@ body {
   cursor: pointer;
   transition: 0.15s;
   box-shadow: 0 6px #c94c00bd;
+  transition: 0.3s ease-in;
 }
 .home-buttonStart button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px #c94c00bd;
+  transition: 0.3s ease-out;
 }
 
 @keyframes jelly {
@@ -150,26 +161,32 @@ body {
 /* CSS DARKMODE */
 .dark .home {
   background-image: url(../Images/darkModeBg.png);
+  transition: 0.3s ease-out;
 }
 
 .dark .btnMusic {
   border: 2px solid #ff4d6d;
+  transition: 0.3s ease-out;
 }
 
 .dark .bgMusic {
   background: #ff4d6d;
+  transition: 0.3s ease-out;
 }
 
 .dark .darkAndLightMode button {
   background: #282828;
   border: 2px solid #282828;
+  transition: 0.3s ease-out;
 }
 .dark .darkAndLightMode .moon {
   display: block;
+  transition: 0.3s ease-out;
 }
 
 .dark .darkAndLightMode .sun {
   display: none;
+  transition: 0.3s ease-out;
 }
 
 .dark .home-titleGame h1 {
@@ -178,14 +195,17 @@ body {
     2px 2px 0 #fff,
     5px 5px 0 #ff4d6d,
     8px 8px 15px rgba(0, 0, 0, 0.35);
+  transition: 0.3s ease-out;
 }
 
 .dark .home-buttonStart button {
   background: #ff4d6d;
   box-shadow: 0 6px #f8032fd9;
+  transition: 0.3s ease-out;
 }
 
 .dark .home-buttonStart button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px #f8032fd9;
+  transition: 0.3s ease-out;
 }
