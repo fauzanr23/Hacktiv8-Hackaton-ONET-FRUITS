@@ -1,81 +1,82 @@
 <!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ONET FRUIT</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ONET FRUIT</title>
 
-  <link rel="stylesheet" href="Asset/Style/StylePageGame.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
-</head>
+    <link rel="stylesheet" href="Asset/Style/StylePageGame.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <audio id="audio" loop>
+      <source src="Asset/musics/musik2.mp3" type="audio/mpeg" />
+    </audio>
 
-  <audio id="audio" loop>
-    <source src="Asset\musics\musik2.mp3" type="audio/mpeg" />
-  </audio>
+    <div class="main">
+      <!-- HEADER -->
+      <div class="home-header">
+        <button class="btnMusic" onclick="btnControlMusic()">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <audio id="audio" loop>
+          <source src="Asset\musics\musik2.mp3" type="audio/mpeg" />
+        </audio>
 
-  <div class="main">
-
-    <!-- HEADER -->
-    <div class="home-header">
-      <button class="btnMusic" onclick="btnControlMusic()">
-        <i class="fa-solid fa-volume-high"></i>
-      </button>
-
-      <button class="pause-btn" onclick="togglePause()">
-        <i id="pauseIcon" class="fa-solid fa-pause"></i>
-      </button>
-    </div>
-
-    <!-- TITLE -->
-    <div class="wrapper">
-      <div class="game-title">
-        <h1>ONET FRUIT</h1>
-      </div>
-    </div>
-
-    <!-- GAME CONTAINER -->
-    <div class="main-container">
-
-      <p id="playerNameText"></p>
-
-      <!-- GAME BOARD -->
-      <div id="gameBoard" class="game-board"></div>
-
-      <!-- CONTROLS -->
-      <div class="controls">
-        <button class="btn" onclick="newGame()">
-          <i class="fas fa-redo"></i> New Game
+        <button class="pause-btn" onclick="togglePause()">
+          <i id="pauseIcon" class="fa-solid fa-pause"></i>
         </button>
       </div>
 
-      <!-- INFO -->
-      <div class="features">
-        <div class="feature-item">
-          ⏱️ <span id="time">00:00</span>
+      <!-- TITLE -->
+      <div class="wrapper">
+        <div class="game-title">
+          <h1>ONET FRUIT</h1>
         </div>
-        <div class="feature-item">
-          Score: <span id="score">0</span>
+      </div>
+
+      <!-- GAME CONTAINER -->
+      <div class="main-container">
+        <p id="nameInput"></p>
+
+        <!-- GAME BOARD -->
+        <div id="gameBoard" class="game-board"></div>
+
+        <!-- CONTROLS -->
+        <div class="controls">
+          <button class="btn" onclick="newGame()">
+            <i class="fas fa-redo"></i> New Game
+          </button>
+        </div>
+
+        <!-- INFO -->
+        <div class="features">
+          <div class="feature-item">⏱️ <span id="time">00:00</span></div>
+          <div class="feature-item">Score: <span id="score">0</span></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- MODAL -->
-  <div class="modal" id="winModal">
-    <div class="modal-content">
-      <h2>🏆 YOU WIN 🏆</h2>
-      <p>
-        Score: <span id="finalScore"></span><br />
-        Time: <span id="finalTime"></span>
-      </p>
-      <button class="btn" onclick="newGame()">Play Again</button>
+    <!-- MODAL -->
+    <div class="modal" id="winModal">
+      <div class="modal-content">
+        <h2>🏆 YOU WIN 🏆</h2>
+        <p>
+          Score: <span id="finalScore"></span><br />
+          Time: <span id="finalTime"></span>
+        </p>
+        <button class="btn" onclick="newGame()">Play Again</button>
+      </div>
     </div>
-  </div>
+
+
+    <script src="Asset/Javascript/script2.js"></script>
+  </body>
+</html>
 
   <script src="Asset/Javascript/script2.js"></script>
 </body>
