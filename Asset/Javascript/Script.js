@@ -2,14 +2,6 @@
 
 let music = document.getElementById("audio");
 let musicOn = false;
-var firstCard = null;
-var secondCard = null;
-var canFlip = true;
-var matches = 0;
-var moves = 0;
-var seconds = 0;
-var timerRunning = false;
-var timerInterval;
 
 function btnControlMusic() {
   let bgMusic = document.querySelector(".btnMusic");
@@ -53,31 +45,6 @@ function btnInputName() {
   window.location.href = "game.html";
 }
 
-// Fungsi untuk waktu
-let time = 60;
-let timer = null;
-let paused = false;
-
-function startTimer() {
-  document.getElementById("time").textContent = time;
-
-  timer = setInterval(() => {
-    if (!paused) {
-      time--;
-      document.getElementById("time").textContent = time;
-
-      if (time === 0) {
-        clearInterval(timer);
-        Swal.fire({
-          icon: "error",
-          title: "Game Over",
-          text: "Waktu habis!",
-        });
-      }
-    }
-  }, 1000);
-}
-
 // Fungsi untuk memulai game
 function startGame() {
   const container = document.getElementById("mainContainer");
@@ -96,19 +63,3 @@ document.addEventListener("keydown", (e) => {
     startGame();
   }
 });
-
-
-// Fungsi untuk waktu
-function togglePause() {
-  const icon = document.getElementById("pauseIcon");
-
-  paused = !paused; // toggle true/false
-
-  if (paused) {
-    icon.classList.remove("fa-pause");
-    icon.classList.add("fa-play");
-  } else {
-    icon.classList.remove("fa-play");
-    icon.classList.add("fa-pause");
-  }
-}

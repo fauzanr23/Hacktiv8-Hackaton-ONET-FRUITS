@@ -1,4 +1,4 @@
-/* ================= GAME DATA ================= */
+//variable kumpulan gambar kartu
 
 const images = [
   "Asset/Images/Kartu/apple.png",
@@ -18,14 +18,14 @@ let secondCard = null;
 let canFlip = true;
 let matches = 0;
 let score = 0;
-
-/* ⏱ COUNTDOWN */
 let timeLeft = 60;
 let timer = null;
 let gameOver = false;
 let music = document.getElementById("audio");
 let musicOn = false;
 let paused = false;
+
+//untuk mengatur musik on off
 
 function btnControlMusic() {
   let bgMusic = document.querySelector(".btnMusic");
@@ -40,14 +40,28 @@ function btnControlMusic() {
   }
 }
 
+//untuk pause game
+
 function togglePause() {
-  paused = !paused;
-  document.getElementById("pauseIcon").className = paused
-    ? "fa-solid fa-play"
-    : "fa-solid fa-pause";
+  if (paused) return; // biar gak double pause
+
+  paused = true;
+  document.getElementById("pauseIcon").className = "fa-solid fa-play";
+
+  Swal.fire({
+    title: "Game Paused",
+    text: "Click resume to continue the game",
+    icon: "info",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    confirmButtonText: "Resume",
+  }).then(() => {
+    paused = false;
+    document.getElementById("pauseIcon").className = "fa-solid fa-pause";
+  });
 }
 
-/* ================= TIMER ================= */
+// untuk mengatur waktu in game
 
 function startTimer() {
   clearInterval(timer);
@@ -68,15 +82,16 @@ function startTimer() {
   }, 1000);
 }
 
-/* ================= START GAME ================= */
+//untuk mengatur start gamee
+
 window.addEventListener("DOMContentLoaded", () => {
   const name = localStorage.getItem("playerName");
   const nameText = document.getElementById("nameInput");
 
   if (nameText) {
     if (name) {
-      nameText.textContent = "Selamat datang " + name + "!";
-    } 
+      nameText.textContent = "Welcome and enjoy playing " + name + "!";
+    }
   }
 });
 
@@ -86,7 +101,6 @@ function startGame() {
 
   let cards = [...images, ...images].sort(() => Math.random() - 0.5);
   console.log(cards);
-  
 
   cards.forEach((img) => {
     const card = document.createElement("div");
@@ -113,7 +127,7 @@ function startGame() {
   startTimer();
 }
 
-/* ================= FLIP CARD ================= */
+//untuk mengatur flip card
 
 function flipCard() {
   if (paused || gameOver) return;
@@ -131,7 +145,7 @@ function flipCard() {
   }
 }
 
-/* ================= MATCH CHECK ================= */
+//untuk mengecek match
 
 function checkMatch() {
   if (firstCard.dataset.image === secondCard.dataset.image) {
@@ -163,7 +177,7 @@ function resetCards() {
   canFlip = true;
 }
 
-/* ================= END GAME ================= */
+//untuk membuat end game
 
 function endGame(isWin) {
   gameOver = true;
@@ -175,7 +189,11 @@ function endGame(isWin) {
       document.getElementById("time").textContent;
     document.getElementById("winModal").classList.add("show");
   } else {
-    alert(`⏰ Waktu habis!\nScore akhir kamu: ${score}`);
+    Swal.fire({
+      icon: "error",
+      title: "Game Over",
+      text: "Waktu habis!",
+    });
   }
 }
 

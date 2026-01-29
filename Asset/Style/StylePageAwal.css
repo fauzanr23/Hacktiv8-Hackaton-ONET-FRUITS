@@ -98,7 +98,7 @@ body {
     2px 2px 0 #fff,
     5px 5px 0 #ffb703,
     8px 8px 15px rgba(0, 0, 0, 0.35);
-  animation: jelly 1.5s infinite alternate;
+  animation: titles 1.5s infinite alternate;
   transition: 0.3s ease-in;
 }
 
@@ -137,7 +137,7 @@ body {
   transition: 0.3s ease-out;
 }
 
-@keyframes jelly {
+@keyframes titles {
   0% {
     transform: scale(1);
   }
@@ -208,4 +208,19 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px #f8032fd9;
   transition: 0.3s ease-out;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 767.98px) {
+  .home-header {
+    top: unset;
+    bottom: 10px;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .home-titleGame h1 {
+    font-size: 50px;
+  }
 }
