@@ -69,6 +69,16 @@ function startTimer() {
 }
 
 /* ================= START GAME ================= */
+window.addEventListener("DOMContentLoaded", () => {
+  const name = localStorage.getItem("playerName");
+  const nameText = document.getElementById("nameInput");
+
+  if (nameText) {
+    if (name) {
+      nameText.textContent = "Selamat datang " + name + "!";
+    } 
+  }
+});
 
 function startGame() {
   const board = document.getElementById("gameBoard");
