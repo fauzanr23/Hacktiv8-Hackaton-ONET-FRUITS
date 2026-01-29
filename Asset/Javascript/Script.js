@@ -41,25 +41,80 @@ function btnInputName() {
     });
     return;
   }
-  window.location.href= "game.html"
+  localStorage.setItem("playerName", name);
+  window.location.href = "game.html";
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+  const name = localStorage.getItem("playerName");
+  const nameText = document.getElementById("playerNameText");
+
+  if (nameText) {
+    if (name) {
+      nameText.textContent = "Selamat datang " + name;
+    } else {
+      nameText.textContent = "Selamat datang Player";
+    }
+
+    startTimer();
+  }
+});
+
+// Fungsi untuk waktu
+let time = 60;
+let timer = null;
+let paused = false;
+
+function startTimer() {
+  document.getElementById("time").textContent = time;
+
+  timer = setInterval(() => {
+    if (!paused) {
+      time--;
+      document.getElementById("time").textContent = time;
+
+      if (time === 0) {
+        clearInterval(timer);
+        Swal.fire({
+          icon: "error",
+          title: "Game Over",
+          text: "Waktu habis!",
+        });
+      }
+    }
+  }, 1000);
+}
 
 // Fungsi untuk memulai game
 function startGame() {
-  const container = document.getElementById('mainContainer');
-  container.classList.add('fade-out');
+  const container = document.getElementById("mainContainer");
+  container.classList.add("fade-out");
 
   setTimeout(() => {
     // Redirect ke halaman game
-    window.location.href = 'onet-game.html';
+    window.location.href = "onet-game.html";
   }, 500);
 }
 
 // Easter egg: tekan spasi untuk start
-document.addEventListener('keydown', (e) => {
-  if (e.code === 'Space') {
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
     e.preventDefault();
     startGame();
   }
 });
+
+// Fungsi untuk waktu
+function togglePause() {
+  const icon = document.getElementById("pauseIcon");
+
+  paused = !paused; // toggle true/false
+
+  if (paused) {
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+  } else {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  }
+}

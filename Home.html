@@ -1,55 +1,59 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Asset/Style/StylePageAwal.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <title>Home Page</title>
-</head>
+  </head>
 
-<body class="light">
+  <body class="light">
     <div class="home">
-        <div class="home-header">
-            <div class="home-btnSongs">
-                <audio id="audio">
-                    <source src="Asset/musics/musik1.mp3" type="audio/mpeg" />
-                </audio>
-                <button class="btnMusic" onclick="btnControlMusic()">
-                    <i id="musicIcon" class="fa-solid fa-volume-high"></i>
-                </button>
-            </div>
-            <div class="darkAndLightMode">
-                <button class="btnMode" onclick="btnControlMode()">
-                    <span class="sun">☀️ </span>
-                    <span class="moon">🌙</span>
-                </button>
-            </div>
+      <div class="home-header">
+        <div class="home-btnSongs">
+          <audio id="audio">
+            <source src="Asset/musics/musik1.mp3" type="audio/mpeg" />
+          </audio>
+          <button class="btnMusic" onclick="btnControlMusic()">
+            <i id="musicIcon" class="fa-solid fa-volume-high"></i>
+          </button>
         </div>
-        <div class="home-wrapper">
-            <div class="home-content">
-                <div class="home-titleGame">
-                    <h1>ONET FRUITS</h1>
-                </div>
-                <div class="home-images">
-                    <img src="Asset/Images/fruits.png" alt="" />
-                </div>
-                <div class="home-box">
-                    <div class="home-inputName">
-                        <input id="nameInput" type="text" placeholder="Masukan nama" />
-                    </div>
-                    <div class="home-buttonStart">
-                        <button type="button" onclick="btnInputName()">PLAY</button>
-                    </div>
-                </div>
-            </div>
+        <div class="darkAndLightMode">
+          <button class="btnMode" onclick="btnControlMode()">
+            <img class="sun" src="./Asset/Images/sun.png" alt="" />
+            <img class="moon" src="./Asset/Images/moon.png" alt="" />
+          </button>
         </div>
+      </div>
+      <div class="home-wrapper">
+        <div class="home-content">
+          <div class="home-titleGame">
+            <h1>ONET FRUITS</h1>
+          </div>
+          <div class="home-images">
+            <img src="Asset/Images/fruits.png" alt="" />
+          </div>
+          <div class="home-box">
+            <div class="home-inputName">
+              <input id="nameInput" type="text" placeholder="Masukan nama" />
+            </div>
+            <div class="home-buttonStart">
+              <button type="button" onclick="btnInputName()">PLAY</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="Asset\Javascript\Script.js"></script>
     <!-- Script untuk sweetAlert Js -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-
+  </body>
 </html>

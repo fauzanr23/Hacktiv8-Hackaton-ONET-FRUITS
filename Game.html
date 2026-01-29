@@ -1,50 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ONET FRUITS - Game Mencocokkan Buah</title>
-    <link href="Asset\Style\StylePageGame.css" rel="stylesheet">
-</head>
-<body>
-<!-- Container utama -->
-<div class="main-container" id="mainContainer">
-    <div class="game-logo">
-        <h1 class="game-title">ONET FRUITS</h1>
-        <p class="game-subtitle">Game Mencocokkan Buah</p>
-    </div>
-
-    <div class="center-fruits">
-        <span class="center-fruit">🍎</span>
-        <span class="center-fruit">🍊</span>
-        <span class="center-fruit">🍋</span>
-        <span class="center-fruit">🍌</span>
-        <span class="center-fruit">🍇</span>
-        <span class="center-fruit">🍓</span>
-    </div>
-
-    <p class="game-description">
-        Cocokkan dua kartu dengan gambar yang sama untuk mendapatkan poin!
-    </p>
-
-    <button class="start-button" onclick="startGame()">
-        <span>🎮 MULAI</span>
-    </button>
-
-    <div class="features">
-        <div class="feature-item">
+    <link href="Asset\Style\StylePageGame.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Container utama -->
+    <div class="main">
+      <div class="home-header">
+        <div class="home-btnSongs">
+          <audio id="audio">
+            <source src="Asset/musics/musik1.mp3" type="audio/mpeg" />
+          </audio>
+          <button class="btnMusic" onclick="btnControlMusic()">
+            <i id="musicIcon" class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+        <div class="btn-pause">
+          <button id="pauseBtn" onclick="togglePause()" class="pause-btn">
+            <i id="pauseIcon" class="fa-solid fa-pause"></i>
+          </button>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="game-title">
+          <h1>ONET FRUIT</h1>
+        </div>
+        <div class="center-fruits">
+          <span class="center-fruit">🍎</span>
+          <span class="center-fruit">🍊</span>
+          <span class="center-fruit">🍋</span>
+          <span class="center-fruit">🍌</span>
+          <span class="center-fruit">🍇</span>
+          <span class="center-fruit">🍓</span>
+        </div>
+      </div>
+      <div class="main-container" id="mainContainer">
+        <div class="name">
+          <p id="playerNameText"></p>
+        </div>
+        <div class="features">
+          <div class="feature-item">
             <span class="feature-icon">⏱️</span>
-            <span>Timer</span>
-        </div>
-        <div class="feature-item">
-            <span class="feature-icon">💯</span>
+            <span id="time">60</span>
+          </div>
+          <div class="feature-item">
             <span>Scoring</span>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-<script src="Asset\Javascript\Script.js"></script>
-
-</body>
+    <script src="Asset/Javascript/Script.js"></script>
+  </body>
 </html>
