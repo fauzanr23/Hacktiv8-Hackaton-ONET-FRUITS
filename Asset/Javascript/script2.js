@@ -79,6 +79,8 @@ function startGame() {
   board.innerHTML = "";
 
   let cards = [...images, ...images].sort(() => Math.random() - 0.5);
+  console.log(cards);
+  
 
   cards.forEach(img => {
     const card = document.createElement("div");
