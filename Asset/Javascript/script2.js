@@ -1,18 +1,3 @@
-const audio = document.getElementById("audio");
-let musicOn = false;
-let paused = false;
-
-function btnControlMusic() {
-  musicOn ? audio.pause() : audio.play();
-  musicOn = !musicOn;
-}
-
-function togglePause() {
-  paused = !paused;
-  document.getElementById("pauseIcon").className =
-    paused ? "fa-solid fa-play" : "fa-solid fa-pause";
-}
-
 /* ================= GAME DATA ================= */
 
 const images = [
@@ -25,8 +10,7 @@ const images = [
   "Asset/Images/Kartu/strawberry.png",
   "Asset/Images/Kartu/watermelon.png",
   "Asset/Images/Kartu/dragon-fruit.png",
-  "Asset/Images/Kartu/passion-fruit.png"
-  
+  "Asset/Images/Kartu/passion-fruit.png",
 ];
 
 let firstCard = null;
@@ -39,6 +23,29 @@ let score = 0;
 let timeLeft = 60;
 let timer = null;
 let gameOver = false;
+let music = document.getElementById("audio");
+let musicOn = false;
+let paused = false;
+
+function btnControlMusic() {
+  let bgMusic = document.querySelector(".btnMusic");
+  if (!musicOn) {
+    music.play();
+    musicOn = true;
+    bgMusic.classList.add("bgMusic");
+  } else {
+    music.pause();
+    musicOn = false;
+    bgMusic.classList.remove("bgMusic");
+  }
+}
+
+function togglePause() {
+  paused = !paused;
+  document.getElementById("pauseIcon").className = paused
+    ? "fa-solid fa-play"
+    : "fa-solid fa-pause";
+}
 
 /* ================= TIMER ================= */
 
@@ -69,7 +76,7 @@ function startGame() {
 
   let cards = [...images, ...images].sort(() => Math.random() - 0.5);
 
-  cards.forEach(img => {
+  cards.forEach((img) => {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.image = img;
@@ -98,7 +105,8 @@ function startGame() {
 
 function flipCard() {
   if (paused || gameOver) return;
-  if (!canFlip || this === firstCard || this.classList.contains("matched")) return;
+  if (!canFlip || this === firstCard || this.classList.contains("matched"))
+    return;
 
   this.classList.add("flipped");
 
