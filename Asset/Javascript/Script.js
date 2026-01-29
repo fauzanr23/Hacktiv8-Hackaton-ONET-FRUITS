@@ -37,7 +37,7 @@ function btnInputName() {
     Swal.fire({
       icon: "warning",
       title: "Oops...",
-      text: "Masukkan nama dulu ya",
+      text: "Please enter your name",
     });
     return;
   }

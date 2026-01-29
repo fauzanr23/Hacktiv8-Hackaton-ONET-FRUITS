@@ -100,7 +100,6 @@ function startGame() {
   board.innerHTML = "";
 
   let cards = [...images, ...images].sort(() => Math.random() - 0.5);
-  console.log(cards);
 
   cards.forEach((img) => {
     const card = document.createElement("div");
@@ -130,8 +129,8 @@ function startGame() {
 //untuk mengatur flip card
 
 function flipCard() {
-  if (paused || gameOver) return;
-  if (!canFlip || this === firstCard || this.classList.contains("matched"))
+  if (paused || gameOver) return; // kalau dia di-pause atau game over, gak bisa di-flip
+  if (!canFlip || this === firstCard || this.classList.contains("matched")) // kalau canFlip === false atau kartu yg baru di-flip atau ada class "matched", jadi gak bisa di-flip
     return;
 
   this.classList.add("flipped");
@@ -192,7 +191,7 @@ function endGame(isWin) {
     Swal.fire({
       icon: "error",
       title: "Game Over",
-      text: "Waktu habis!",
+      text: "Time is up!",
     });
   }
 }
@@ -203,3 +202,9 @@ function newGame() {
 }
 
 startGame();
+
+//kembali ke Home
+  
+function backToHome(){
+  window.location.href = "Home.html";
+}
