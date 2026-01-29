@@ -53,21 +53,6 @@ function btnInputName() {
   window.location.href = "game.html";
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  const name = localStorage.getItem("playerName");
-  const nameText = document.getElementById("playerNameText");
-
-  if (nameText) {
-    if (name) {
-      nameText.textContent = "Selamat datang " + name;
-    } else {
-      nameText.textContent = "Selamat datang Player";
-    }
-
-    startTimer();
-  }
-});
-
 // Fungsi untuk waktu
 let time = 60;
 let timer = null;
@@ -111,6 +96,7 @@ document.addEventListener("keydown", (e) => {
     startGame();
   }
 });
+
 
 // Fungsi untuk waktu
 function togglePause() {
