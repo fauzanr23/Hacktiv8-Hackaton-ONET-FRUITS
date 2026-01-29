@@ -1,62 +1,82 @@
 <!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONET FRUIT</title>
 
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ONET FRUITS - Game Mencocokkan Buah</title>
-    <link href="Asset\Style\StylePageGame.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- Container utama -->
-    <div class="main">
-      <div class="home-header">
-        <div class="home-btnSongs">
-          <audio id="audio">
-            <source src="Asset/musics/musik1.mp3" type="audio/mpeg" />
-          </audio>
-          <button class="btnMusic" onclick="btnControlMusic()">
-            <i id="musicIcon" class="fa-solid fa-volume-high"></i>
-          </button>
-        </div>
-        <div class="btn-pause">
-          <button id="pauseBtn" onclick="togglePause()" class="pause-btn">
-            <i id="pauseIcon" class="fa-solid fa-pause"></i>
-          </button>
-        </div>
+  <link rel="stylesheet" href="Asset/Style/StylePageGame.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+
+  <audio id="audio" loop>
+    <source src="Asset/musics/musik1.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="main">
+
+    <!-- HEADER -->
+    <div class="home-header">
+      <button class="btnMusic" onclick="btnControlMusic()">
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+
+      <button class="pause-btn" onclick="togglePause()">
+        <i id="pauseIcon" class="fa-solid fa-pause"></i>
+      </button>
+    </div>
+
+    <!-- TITLE -->
+    <div class="wrapper">
+      <div class="game-title">
+        <h1>ONET FRUIT</h1>
       </div>
-      <div class="wrapper">
-        <div class="game-title">
-          <h1>ONET FRUIT</h1>
-        </div>
-        <div class="center-fruits">
-          <span class="center-fruit">🍎</span>
-          <span class="center-fruit">🍊</span>
-          <span class="center-fruit">🍋</span>
-          <span class="center-fruit">🍌</span>
-          <span class="center-fruit">🍇</span>
-          <span class="center-fruit">🍓</span>
-        </div>
+    </div>
+
+    <!-- GAME CONTAINER -->
+    <div class="main-container">
+
+      <p id="playerNameText"></p>
+
+      <!-- GAME BOARD -->
+      <div id="gameBoard" class="game-board"></div>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+        <button class="btn" onclick="newGame()">
+          <i class="fas fa-redo"></i> New Game
+        </button>
       </div>
-      <div class="main-container" id="mainContainer">
-        <div class="name">
-          <p id="playerNameText"></p>
+
+      <!-- INFO -->
+      <div class="features">
+        <div class="feature-item">
+          ⏱️ <span id="time">00:00</span>
         </div>
-        <div class="features">
-          <div class="feature-item">
-            <span class="feature-icon">⏱️</span>
-            <span id="time">60</span>
-          </div>
-          <div class="feature-item">
-            <span>Scoring</span>
-          </div>
+        <div class="feature-item">
+          Score: <span id="score">0</span>
         </div>
       </div>
     </div>
-    <script src="Asset/Javascript/Script.js"></script>
-  </body>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="winModal">
+    <div class="modal-content">
+      <h2>🏆 YOU WIN 🏆</h2>
+      <p>
+        Score: <span id="finalScore"></span><br />
+        Time: <span id="finalTime"></span>
+      </p>
+      <button class="btn" onclick="newGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="Asset/Javascript/script2.js"></script>
+</body>
 </html>

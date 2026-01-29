@@ -1,0 +1,167 @@
+const audio = document.getElementById("audio");
+let musicOn = false;
+let paused = false;
+
+function btnControlMusic() {
+  musicOn ? audio.pause() : audio.play();
+  musicOn = !musicOn;
+}
+
+function togglePause() {
+  paused = !paused;
+  document.getElementById("pauseIcon").className =
+    paused ? "fa-solid fa-play" : "fa-solid fa-pause";
+}
+
+/* ================= GAME DATA ================= */
+
+const images = [
+  "Asset/Images/Kartu/apple.png",
+  "Asset/Images/Kartu/bananas.png",
+  "Asset/Images/Kartu/cherries.png",
+  "Asset/Images/Kartu/grapes.png",
+  "Asset/Images/Kartu/orange.png",
+  "Asset/Images/Kartu/pineapple.png",
+  "Asset/Images/Kartu/strawberry.png",
+  "Asset/Images/Kartu/watermelon.png",
+  "Asset/Images/Kartu/dragon-fruit.png",
+  "Asset/Images/Kartu/passion-fruit.png"
+  
+];
+
+let firstCard = null;
+let secondCard = null;
+let canFlip = true;
+let matches = 0;
+let score = 0;
+
+/* ⏱ COUNTDOWN */
+let timeLeft = 60;
+let timer = null;
+let gameOver = false;
+
+/* ================= TIMER ================= */
+
+function startTimer() {
+  clearInterval(timer);
+  document.getElementById("time").textContent = "1:00";
+
+  timer = setInterval(() => {
+    if (paused || gameOver) return;
+
+    timeLeft--;
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    document.getElementById("time").textContent =
+      `${m}:${s < 10 ? "0" : ""}${s}`;
+
+    if (timeLeft <= 0) {
+      endGame(false);
+    }
+  }, 1000);
+}
+
+/* ================= START GAME ================= */
+
+function startGame() {
+  const board = document.getElementById("gameBoard");
+  board.innerHTML = "";
+
+  let cards = [...images, ...images].sort(() => Math.random() - 0.5);
+
+  cards.forEach(img => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.image = img;
+    card.innerHTML = `
+      <div class="card-front">❤️</div>
+      <div class="card-back"><img src="${img}"></div>
+    `;
+    card.onclick = flipCard;
+    board.appendChild(card);
+  });
+
+  firstCard = secondCard = null;
+  canFlip = true;
+  matches = 0;
+  score = 0;
+  gameOver = false;
+  timeLeft = 60;
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("time").textContent = "1:00";
+
+  startTimer();
+}
+
+/* ================= FLIP CARD ================= */
+
+function flipCard() {
+  if (paused || gameOver) return;
+  if (!canFlip || this === firstCard || this.classList.contains("matched")) return;
+
+  this.classList.add("flipped");
+
+  if (!firstCard) {
+    firstCard = this;
+  } else {
+    secondCard = this;
+    canFlip = false;
+    checkMatch();
+  }
+}
+
+/* ================= MATCH CHECK ================= */
+
+function checkMatch() {
+  if (firstCard.dataset.image === secondCard.dataset.image) {
+    setTimeout(() => {
+      firstCard.classList.add("matched");
+      secondCard.classList.add("matched");
+
+      matches++;
+      score += 10; // ⭐ SCORE NAIK SAAT MATCH
+      document.getElementById("score").textContent = score;
+
+      resetCards();
+
+      if (matches === images.length) {
+        endGame(true);
+      }
+    }, 400);
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove("flipped");
+      secondCard.classList.remove("flipped");
+      resetCards();
+    }, 700);
+  }
+}
+
+function resetCards() {
+  firstCard = secondCard = null;
+  canFlip = true;
+}
+
+/* ================= END GAME ================= */
+
+function endGame(isWin) {
+  gameOver = true;
+  clearInterval(timer);
+
+  if (isWin) {
+    document.getElementById("finalScore").textContent = score;
+    document.getElementById("finalTime").textContent =
+      document.getElementById("time").textContent;
+    document.getElementById("winModal").classList.add("show");
+  } else {
+    alert(`⏰ Waktu habis!\nScore akhir kamu: ${score}`);
+  }
+}
+
+function newGame() {
+  document.getElementById("winModal").classList.remove("show");
+  startGame();
+}
+
+startGame();
