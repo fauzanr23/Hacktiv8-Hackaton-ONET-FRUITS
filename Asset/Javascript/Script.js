@@ -2,6 +2,14 @@
 
 let music = document.getElementById("audio");
 let musicOn = false;
+var firstCard = null;
+var secondCard = null;
+var canFlip = true;
+var matches = 0;
+var moves = 0;
+var seconds = 0;
+var timerRunning = false;
+var timerInterval;
 
 function btnControlMusic() {
   let bgMusic = document.querySelector(".btnMusic");
