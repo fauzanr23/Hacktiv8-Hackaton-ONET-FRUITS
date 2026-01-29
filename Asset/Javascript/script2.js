@@ -69,12 +69,24 @@ function startTimer() {
 }
 
 /* ================= START GAME ================= */
+window.addEventListener("DOMContentLoaded", () => {
+  const name = localStorage.getItem("playerName");
+  const nameText = document.getElementById("nameInput");
+
+  if (nameText) {
+    if (name) {
+      nameText.textContent = "Selamat datang " + name + "!";
+    } 
+  }
+});
 
 function startGame() {
   const board = document.getElementById("gameBoard");
   board.innerHTML = "";
 
   let cards = [...images, ...images].sort(() => Math.random() - 0.5);
+  console.log(cards);
+  
 
   cards.forEach((img) => {
     const card = document.createElement("div");
