@@ -206,5 +206,5 @@ startGame();
 //kembali ke Home
   
 function backToHome(){
-  window.location.href = "Home.html";
+  window.location.href = "index.html";
 }
