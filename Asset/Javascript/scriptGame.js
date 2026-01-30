@@ -1,16 +1,16 @@
 //variable kumpulan gambar kartu
 
 const images = [
-  "Asset/Images/Kartu/apple.png",
-  "Asset/Images/Kartu/bananas.png",
-  "Asset/Images/Kartu/cherries.png",
-  "Asset/Images/Kartu/grapes.png",
-  "Asset/Images/Kartu/orange.png",
-  "Asset/Images/Kartu/pineapple.png",
-  "Asset/Images/Kartu/strawberry.png",
-  "Asset/Images/Kartu/watermelon.png",
-  "Asset/Images/Kartu/dragon-fruit.png",
-  "Asset/Images/Kartu/passion-fruit.png",
+  "../Asset/Images/Kartu/apple.png",
+  "../Asset/Images/Kartu/bananas.png",
+  "../Asset/Images/Kartu/cherries.png",
+  "../Asset/Images/Kartu/grapes.png",
+  "../Asset/Images/Kartu/orange.png",
+  "../Asset/Images/Kartu/pineapple.png",
+  "../Asset/Images/Kartu/strawberry.png",
+  "../Asset/Images/Kartu/watermelon.png",
+  "../Asset/Images/Kartu/dragon-fruit.png",
+  "../Asset/Images/Kartu/passion-fruit.png",
 ];
 
 let firstCard = null;
@@ -206,5 +206,5 @@ startGame();
 //kembali ke Home
   
 function backToHome(){
-  window.location.href = "index.html";
+  window.location.href = "../index.html";
 }

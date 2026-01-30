@@ -42,19 +42,19 @@ function btnInputName() {
     return;
   }
   localStorage.setItem("playerName", name);
-  window.location.href = "game.html";
+  window.location.href = "HTMLGame/Game.html";
 }
 
 // Fungsi untuk memulai game
-function startGame() {
-  const container = document.getElementById("mainContainer");
-  container.classList.add("fade-out");
+// function startGame() {
+//   const container = document.getElementById("mainContainer");
+//   container.classList.add("fade-out");
 
-  setTimeout(() => {
-    // Redirect ke halaman game
-    window.location.href = "onet-game.html";
-  }, 500);
-}
+//   setTimeout(() => {
+//     // Redirect ke halaman game
+//     window.location.href = "onet-game.html";
+//   }, 500);
+// }
 
 // Easter egg: tekan spasi untuk start
 document.addEventListener("keydown", (e) => {
